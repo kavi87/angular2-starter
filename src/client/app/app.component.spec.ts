@@ -74,7 +74,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>',
+  template: '<ctd-root></ctd-root>',
   directives: [AppComponent]
 })
 class TestComponent {

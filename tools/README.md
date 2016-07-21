@@ -1,7 +1,5 @@
 # Tools documentation
 
-This document contains information about the tools section of the `angular2-seed`.
-
 ## General Information
 
 The root of this folder contains the following files:

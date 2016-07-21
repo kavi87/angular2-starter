@@ -5,6 +5,6 @@ import { AboutComponent } from './index';
 export const AboutRoutes: RouterConfig = [
   {
     path: 'about',
-    component: AboutComponent
+    component: <any>AboutComponent
   }
 ];

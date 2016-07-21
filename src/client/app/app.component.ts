@@ -5,12 +5,15 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { Config, NameListService, NavbarComponent, ToolbarComponent } from './shared/index';
 
 /**
- * This class represents the main application component. Within the @Routes annotation is the configuration of the
- * applications routes, configuring the paths for the lazy loaded components (HomeComponent, AboutComponent).
+ * This class represents the main application component.
+ *
+ * Toolbar (top) and Navbar (side) components are instantiated inside this component to provide them in all routes.
+ * The application have one router. When the browser's URL changes, the router looks for a corresponding Route from
+ * which it can determine the component to display.
  */
 @Component({
   moduleId: module.id,
-  selector: 'citadel-root',
+  selector: 'ctd-root',
   viewProviders: [NameListService, HTTP_PROVIDERS],
   templateUrl: 'app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]

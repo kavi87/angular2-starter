@@ -1,0 +1,12 @@
+{
+  "main": "index.js",
+  "format": "cjs",
+  "meta": {
+    "./assets/global/plugins/jquery.min.js": {
+      "format": "global"
+    },
+    "./assets/global/plugins/bootstrap/js/bootstrap.min.js": {
+      "deps": ["../../jquery.min.js"]
+    }
+  }
+}

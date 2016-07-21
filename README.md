@@ -1,24 +1,40 @@
 # Introduction
 
-The Citadel front end is an SPA built in [Typescript](https://www.typescriptlang.org/) with 
-[Angular (v.2)](https://angular.io/) that uses the [SystemJS](https://github.com/systemjs/systemjs) 
-module loader and a [Bootstrap (v.3)](http://getbootstrap.com/) based theme. 
-Project is structured using mgechev's' [angular2-seed](https://github.com/mgechev/angular2-seed). It uses 
-[Gulp](http://gulpjs.com/) for building the application. Testing is done through
+The Citadel front end is a Single Page Application (SPA) built in [Typescript (~1.8)](https://www.typescriptlang.org/) with 
+[Angular (~2)](https://angular.io/) that uses the [SystemJS](https://github.com/systemjs/systemjs) 
+module loader and a [Bootstrap (~3)](http://getbootstrap.com/) based theme named Metronic (4.6). 
+Project is structured using Minko Gechev's [angular2-seed](https://github.com/mgechev/angular2-seed). 
+It uses [Gulp](http://gulpjs.com/) for building the application. Testing is done through
 [Karma](https://karma-runner.github.io/1.0/index.html) using the 
 [Jasmine](http://jasmine.github.io/) framework. 
 
-**Note**: All dependencies are MIT licenced.
+**Note**: All dependencies are MIT licenced except for the [Metronic theme](https://themeforest.net/licenses/standard).
  
 # Style conventions
 
-Style conventions should follow the official Angular.io 
+Style convention should try to adhere to the official Angular.io 
 [style guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
+
+## Prefix
+
+As per the style guide [recommendation](https://angular.io/styleguide#!#02-07) a prefix should be used 
+for DOM selectors in order to avoid conflict and improve readability.
+
+The chosen prefix is: **ctd** (short for "Citadel").
+
+Example: 
+
+```
+@Component({
+  selector: 'ctd-my-component'
+})
+export class MyComponent {}
+```
 
 # How to start
 
 **Note**: this project requires [node](https://nodejs.org/en/) v4.x.x or higher and
-npm (Node Package Manager - comes with node) 3.x.x or higher.
+npm (Package Manager - installed with node) 3.x.x or higher.
 
 ## Working behind a proxy ?
 
@@ -29,7 +45,7 @@ npm config set https-proxy http://proxy.company.com:8080
 ```
 
 Typescript typings definition are managed through [typings](https://github.com/typings/typings) and will require 
-proxy settings as well. Set a `.typingsrc` at the root or above with the following:
+proxy settings as well in order to be downloaded. Set a `.typingsrc` at the root of the project with the following:
  ```bash
 proxy="http://proxy.company.com:8080"
 rejectUnauthorized=false
@@ -37,10 +53,11 @@ rejectUnauthorized=false
 
 ## Start
 
-In order to start the project use:
+In order to start the project locally use:
 
 ```bash
-cd citadel-webapp
+# go to project root directory
+cd citadel-webapp 
 # install the project's dependencies
 npm install
 # watches your files and uses livereload by default
@@ -120,11 +137,6 @@ npm run serve.coverage
 # e2e (aka. end-to-end, integration) - In three different shell windows
 # Make sure you don't have a global instance of Protractor
 
-# npm run webdriver-update <- You will need to run this the first time
-npm run webdriver-start
-npm run serve.e2e
-npm run e2e
-
 # e2e live mode - Protractor interactive mode
 # Instead of last command above, you can use:
 npm run e2e.live
@@ -143,32 +155,23 @@ You can learn more about [Protractor Interactive Mode here](https://github.com/a
 ├── src                        <- source code of the application
 │   └── client
 │       ├── app
-│       │   ├── +about
-│       │   │   ├── about.component.css
-│       │   │   ├── about.component.e2e-spec.ts
-│       │   │   ├── about.component.html
-│       │   │   ├── about.component.spec.ts
-│       │   │   ├── about.component.ts
-│       │   │   └── index.ts
-│       │   ├── +home
-│       │   │   ├── home.component.css
-│       │   │   ├── home.component.e2e-spec.ts
-│       │   │   ├── home.component.html
-│       │   │   ├── home.component.spec.ts
-│       │   │   ├── home.component.ts
-│       │   │   └── index.ts
+│       │   ├── +<feature> <!- application feature are grouped ->
+│       │   │   ├── feature.component.css
+│       │   │   ├── feature.component.e2e-spec.ts
+│       │   │   ├── feature.component.html
+│       │   │   ├── feature.component.spec.ts
+│       │   │   ├── feature.component.ts
+│       │   │   ├── feature.routes.ts 
+│       │   │   └── index.ts <!-- entry point to this feature -->
+│       │   ├
 │       │   ├── app.component.e2e-spec.ts
 │       │   ├── app.component.html
 │       │   ├── app.component.spec.ts
 │       │   ├── app.component.ts
 │       │   ├── hot_loader_main.ts
 │       │   ├── main.ts
-│       │   └── shared
+│       │   └── shared <!- i.e transverse components meant to be reused ->
 │       │       ├── index.ts
-│       │       ├── name-list
-│       │       │   ├── index.ts
-│       │       │   ├── name-list.service.spec.ts
-│       │       │   └── name-list.service.ts
 │       │       ├── navbar
 │       │       │   ├── index.ts
 │       │       │   ├── navbar.component.css
@@ -180,8 +183,8 @@ You can learn more about [Protractor Interactive Mode here](https://github.com/a
 │       │           ├── toolbar.component.html
 │       │           └── toolbar.component.ts
 │       ├── assets
-│       │   └── svg
-│       │       └── more.svg
+│       │   └── theme
+│       │       └── metronic
 │       ├── css
 │       │   └── main.css
 │       ├── index.html
